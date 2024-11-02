@@ -1,11 +1,14 @@
-+++ 
-title = "Article test github" 
-description = "Article test ecrit depuis mon portable sur github"
-date = 2024-10-02
++++
+title = "Article git"
+description = "Article de test ecrit depuis portable"
+date = 2024-08-09
 
-[author] name = "La Chignol" email = "Pas d'email for you "
+[author]
+name = "La Chignol"
+email = "Pas d'email for you "
 
-[footer] copyright = "©LaChignole"
+[footer]
+copyright = "©LaChignole"
 
 +++
 
