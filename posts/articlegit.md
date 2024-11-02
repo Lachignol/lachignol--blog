@@ -15,5 +15,5 @@ copyright = "©LaChignole"
 # la rentrer a 42 
 
 ## c'est lundi !
-![str_split](https://github.com/Lachignol/lachignol--blog/blob/main/Photos/IMG_1134.jpeg)
+![str_split](https://github.com/Lachignol/lachignol--blog/Photos/IMG_1134.jpeg)
 balblabla 
