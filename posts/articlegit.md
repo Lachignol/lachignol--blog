@@ -1,5 +1,5 @@
 +++
-title = "Article git"
+title = "Article test depuis git"
 description = "Article de test ecrit depuis portable"
 date = 2024-08-09
 
@@ -8,12 +8,10 @@ name = "La Chignol"
 email = "Pas d'email for you "
 
 [footer]
-copyright = "©LaChignole"
+copyright = "©LaChignol"
 
 +++
 
-# la rentrer a 42 
-
-## c'est lundi !
+## teste de l'affichage d'une image de mon str_split !
 ![str_split](https://raw.githubusercontent.com/Lachignol/lachignol--blog/refs/heads/main/Photos/IMG_1134.jpeg)
 balblabla 
