@@ -8,15 +8,15 @@ name = "La Chignol"
 email = "Pas d'email for you "
 
 [footer]
-copyright = "©LaChignole"
+copyright = "©LaChignol"
 
 +++
 
 
 
 
-Pas grand chose a dire 
+### Pas grand chose a dire 
 
-Step 1: coder.
-Step 2: coder.
-Step 3: et encore coder.
+*Step 1: coder.
+*Step 2: coder.
+*Step 3: et encore coder.
