@@ -17,6 +17,6 @@ copyright = "©LaChignol"
 
 ### Pas grand chose a dire 
 
-*Step 1: coder.
-*Step 2: coder.
-*Step 3: et encore coder.
+- Step 1: coder.
+- Step 2: coder.
+- Step 3: et encore coder.
