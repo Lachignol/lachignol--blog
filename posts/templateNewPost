@@ -1,6 +1,6 @@
 +++
-title = "Article git"
-description = "Article de test ecrit depuis portable"
+title = "Nom Article"
+description = "Article de test"
 date = 2024-08-09
 
 [author]
@@ -8,6 +8,6 @@ name = "La Chignol"
 email = "Pas d'email for you "
 
 [footer]
-copyright = "©LaChignole"
+copyright = "©LaChignol"
 
 +++
