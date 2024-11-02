@@ -1,5 +1,5 @@
 +++
-title = "Le code du blog"
+title = "Le code du blog v1"
 description = "Main.go"
 date = 2024-08-09
 
@@ -8,7 +8,7 @@ name = "La Chignol"
 email = "Pas d'email for you "
 
 [footer]
-copyright = "©LaChignole"
+copyright = "©LaChignol"
 
 +++
 
