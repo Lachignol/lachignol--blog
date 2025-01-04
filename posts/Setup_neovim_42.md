@@ -1,7 +1,7 @@
 +++
 title = "Setup Neovim in 42 School"
 description = "Tuto d'installation pour un setup rapide et minimum a l'ecole 42"
-date = 2024-04-01
+date = 2025-04-01
 
 [author]
 name = "La Chignol"
