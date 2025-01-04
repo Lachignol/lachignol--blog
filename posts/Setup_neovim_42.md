@@ -25,6 +25,7 @@ chmod u+x nvim.appimage
 
 
 ## 2-Faire que neovim soit accessible depuis partout sur votre ordinateur.
+
 Ajouter a votre fichier .zshrc l'alias qui pointe ver l'executable nvim afin de pouvoir le lancer depuis n'importe.
 
 
@@ -34,15 +35,16 @@ alias nvim=/mnt/nfs/homes/votre_login_42/nvim
 
 ## 3-Telecharger la distrib lazyvim.
 
-- Installer la distrib au lien suivre les etapes presente dans ce lien:
+- Installer la distrib suivre les etapes presente dans ce lien:
  https://www.lazyvim.org/installation
 - Afin de voir toutes les icones il est preferable (pas obligatoire )de telecharger une nerdfont (police) disponible au lien suivant :
-  https://www.nerdfonts.com/font-downloads
+ https://www.nerdfonts.com/font-downloads
 
 ## 4-definir les tabulation comme reel.
 
 - Ajouter dans le fichier ~/.config/nvim/lua/config/keymaps.lua ceci:
-(pour info les noms de dossier sont a chaque fois ecrit en haut du code que je met)
+
+  
 ```lua
 -- ~/.config/nvim/lua/config/keymaps.lua
 local function map(mode, lhs, rhs, opts)
@@ -83,7 +85,7 @@ vim.api.nvim_set_keymap('i', '<Right>', '', { noremap = true, silent = true })
 ## 5-Installer les differents plugins.
 
 - Le chemin des fichiers a cree sont en haut de chaque code:
-(Ex:Cree le fichier ft_nvim.lua dans ~/.config/nvim/lua/plugins/ et ajouter le code suivant)
+(Ex:Cree le fichier ft_nvim.lua dans ~/.config/nvim/lua/plugins/ et ajouter le code suivant).
 
 ### Plugin pour avoir le header de 42 :
 ```lua
