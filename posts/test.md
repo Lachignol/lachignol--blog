@@ -1,7 +1,7 @@
 +++
-title = "Voici mon premier article"
+title = "Introduction du blog"
 description = "Premier Article!"
-date = 2024-08-09
+date = 2025-04-01
 
 [author]
 name = "La Chignol"
@@ -15,8 +15,7 @@ copyright = "©LaChignol"
 
 
 
-### Pas grand chose a dire 
+### Je vais pas raconter ma vie j'ai juste cree ce blog en golang afin de pouvoir ecrire des articles ( c'est un grand mots 🤦) depuis mon telephone au format MarkDown. 
 
-- Step 1: coder.
-- Step 2: coder.
-- Step 3: et encore coder.
+- test 1: Microphone Check.
+- test 2: Mic Checka.
