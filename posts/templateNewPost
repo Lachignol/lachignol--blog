@@ -21,6 +21,23 @@ copyright = "©LaChignol"
 - liste element 1
 - liste element 2 
 
+Pour mettre une image 
+Comment uploader une image de cette façon
+Pour utiliser cette méthode d'insertion d'image, suivez ces étapes :
+Hébergez votre image : Uploadez votre image sur GitHub dans un dépôt public.
+Obtenez l'URL brute :
+Naviguez jusqu'à votre image sur GitHub
+Cliquez sur "Raw" ou trouvez l'option pour afficher l'image brute
+Copiez l'URL complète
+Créez la ligne Markdown :
+Commencez par ![
+Ajoutez un texte alternatif entre crochets []
+Collez l'URL de l'image entre parenthèses ()
+Insérez dans votre document : Placez cette ligne là où vous souhaitez que l'image apparaisse dans votre document Markdown.
+En suivant ces étapes, vous pourrez facilement insérer des images hébergées sur GitHub dans vos documents Markdown.
+
+![txt_alternatif a modifier ici ](https://raw.githubusercontent.com/Lachignol/lachignol--blog/refs/heads/main/Photos/IMG_1134.jpeg)
+
 (pour mettre du code ecrire ceci et remplacer le language utilise ici go puis entre les deux balise mettre le contenu)
 ```go
 
