@@ -11,3 +11,18 @@ email = "Pas d'email for you "
 copyright = "©LaChignol"
 
 +++
+
+(contenu de l'article)
+# h1
+
+## h2
+
+### h3
+- liste element 1
+- liste element 2 
+
+(pour mettre du code ecrire ceci et remplacer le language utilise ici go puis entre les deux balise mettre le contenu)
+```go
+
+
+```
