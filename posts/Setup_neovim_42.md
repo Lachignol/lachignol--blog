@@ -12,7 +12,7 @@ copyright = "©LaChignol"
 
 +++
 
-# Setup minimum de Neovim a 42.
+# Voici mon guide d'installation perso pour un setup minimal de Neovim a 42.
 
 ## 1-Telecharger le fichier image de neovim.
 
