@@ -12,9 +12,9 @@ copyright = "©LaChignol"
 
 +++
 
-# Voici mon guide d'installation perso pour un setup minimal de Neovim a 42.
+#### Voici mon guide d'installation perso pour un setup minimal de Neovim a 42.
 
-## 1-Telecharger le fichier image de neovim.
+##### 1-Telecharger le fichier image de neovim.
 
 
 ```bash
@@ -24,7 +24,7 @@ chmod u+x nvim.appimage
 ```
 
 
-## 2-Faire que neovim soit accessible depuis partout sur votre ordinateur.
+##### 2-Faire que neovim soit accessible depuis partout sur votre ordinateur.
 
 Ajouter a votre fichier .zshrc l'alias qui pointe ver l'executable nvim afin de pouvoir le lancer depuis n'importe.
 
@@ -33,14 +33,14 @@ Ajouter a votre fichier .zshrc l'alias qui pointe ver l'executable nvim afin de 
 alias nvim=/mnt/nfs/homes/votre_login_42/nvim
 ```
 
-## 3-Telecharger la distrib lazyvim.
+##### 3-Telecharger la distrib lazyvim.
 
 - Installer la distrib suivre les etapes presente dans ce lien:
  https://www.lazyvim.org/installation
 - Afin de voir toutes les icones il est preferable (pas obligatoire )de telecharger une nerdfont (police) disponible au lien suivant :
  https://www.nerdfonts.com/font-downloads
 
-## 4-definir les tabulation comme reel.
+##### 4-definir les tabulation comme reel.
 
 - Ajouter dans le fichier ~/.config/nvim/lua/config/keymaps.lua ceci:
 
@@ -82,12 +82,12 @@ vim.api.nvim_set_keymap('i', '<Right>', '', { noremap = true, silent = true })
 
 ```
 
-## 5-Installer les differents plugins.
+##### 5-Installer les differents plugins.
 
 - Le chemin des fichiers a cree sont en haut de chaque code:
 (Ex:Cree le fichier ft_nvim.lua dans ~/.config/nvim/lua/plugins/ et ajouter le code suivant).
 
-### Plugin pour avoir le header de 42 :
+###### Plugin pour avoir le header de 42 :
 ```lua
 -- ~/.config/nvim/lua/plugins/ft_nvim.lua
 return {
@@ -113,7 +113,7 @@ return {
 }
 ```
 
-### Plugin pour avoir un terminal accessible rapidement :
+###### Plugin pour avoir un terminal accessible rapidement :
 ```lua
 -- ~/.config/nvim/lua/plugins/toggleterm.lua
 return {
@@ -143,7 +143,7 @@ return {
 }
 ```
 
-### Plugin pour avoir la norminette :
+###### Plugin pour avoir la norminette :
 ```lua
 -- ~/.config/nvim/lua/plugins/norminette42.lua
 return {
@@ -159,7 +159,7 @@ return {
 }
 ```
 
-### Plugin pour commenter rapidement avec les touches gcc:
+###### Plugin pour commenter rapidement avec les touches gcc:
 ```lua
 -- ~/.config/nvim/lua/plugins/comment.lua
 return {
@@ -183,9 +183,9 @@ return {
   end,
 }
 ```
-## Ces plugins sont optionnels mais donnent plus de style:
+##### Ces plugins sont optionnels mais donnent plus de style:
 
-### colorscheme:
+###### colorscheme:
 ```lua
 -- ~/.config/nvim/lua/plugins/colorscheme.lua
 return {
@@ -263,7 +263,7 @@ return {
 }
 ```
 
-### Plugin pour avoir le fond de neovim transparent (ajouter une image d'arriere plan dans votre terminal ):
+###### Plugin pour avoir le fond de neovim transparent (ajouter une image d'arriere plan dans votre terminal ):
 ```lua
 -- ~/.config/nvim/lua/plugins/transparent.lua
 return {

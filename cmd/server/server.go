@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"os"
 
-	global "github.com/Lachignol/blogWithMd"
+	global "github.com/Lachignol/lachignol-blog"
 )
 
 func main() {

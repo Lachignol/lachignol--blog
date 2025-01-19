@@ -4,31 +4,67 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend :{
+          fontFamily: {
+            ocra : ['OCRA' , 'monospace'] ,
+          }
+        }
+      }
+    }
+  </script>
+  <style>@font-face {
+    font-family: 'OCR-A';
+    src: url('./fonts/OCRAStd.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  </style>
   <title>La Chignol Blog </title>
 </head>
 <body>
-  <nav class="flex items-center justify-between bg-gray-800 p-6 mb-4">
-    <div class="flex items-center flex-shrink-0 text-white mr-6">
-      <span class="font-semibold text-xl tracking-tight">La Chignol Blog</span>
-    </div>
-    <div class="block">
-      <ul class="flex space-x-4">
-        <li><a href="#" class="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
+  <header class="flex flex-col items-center justify-between max-w-full md:max-w-6xl px-2 md:px-6 py-12 mx-auto md:flex-row">
+    <a href="/" class="text-indigo-900 z-10 active">
+        <img src="https://www.svgrepo.com/show/489282/brand.svg" class="w-24 py-8 md:py-0 g-image">
+    </a>
+    <nav class="z-10">
+        <ul class="flex flex-row items-center px-6 py-4 text-indigo-100 bg-indigo-900 rounded-lg">
+            <li class="pr-8">
+                <a class="font-ocra" href="/">Blog</a>
+            </li>
+            <li class="pr-8">
+              <a class="font-ocra" href="https://github.com/Lachignol" target="_blank">GitHub</a>
+            </li>
+            <li class="pr-8">
+                <a class="font-ocra" href="https://www.linkedin.com/in/alexandre-scordilis" target="_blank">LinkedIn</a>
+            </li>
+        </ul>
+    </nav>
+</header>
   <div class="container mx-auto">
-    <h1 class="text-4xl font-bold text-center mb-8">Sommaire des articles</h1>
-      <ul class="">
-        {{range .Posts}}
-        <a href = "/post/{{.Slug}}" class="">
-          <li class="rounded-lg bg-white border-2 border-dashed p-4 mb-8">
-            <h2 class="text-xl font-bold">{{.Title}}</h2>
-            <p>{{.Description}}</p>
+    <h1 class=" font-ocra text-4xl font-bold text-center">Articles</h1>
+  </div>
+  <section class=" font-ocra bg-white p-2 md:p-6 rounded-2xl border border-gray-300 max-w-xl mx-auto mt-[10vh]">
+    {{range .Posts}}
+      <a href = "/post/{{.Slug}}" class="">
+        <summary class="outline-none list-none py-6 text-lg font-bold cursor-pointer relative flex justify-between rounded-lg select-none hover:after:opacity-75 focus-visible:ring-4 focus-visible:ring-gray-100 after:content-[''] after:absolute after:right-0 after:top-6 after:h-6 after:w-6 after:bg-[url('data:image/svg+xml;charset=UTF-8,<svg class=\'w-6 h-6\' fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\' xmlns=\'http://www.w3.org/2000/svg\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M19 9l-7 7-7-7\'></path></svg>')] after:opacity-40 after:transition-transform after:duration-150 after:ease">
+          {{.Title}}
+        </summary>
+      </a>
+            <article class="animate-slide-in">
+              <details false class="border-b border-gray-300">
+              <p class="text-gray-500 mb-6">{{.Description}}</p>
+            </details>
+            </article>
+            <p></p>
           </li>
           </a>
+        
         {{end}}
-      </ul>
-  </div>
+      </section>
+     
+  
 </body>
 </html>

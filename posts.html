@@ -1,40 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+  <script src="https://cdn.tailwindcss.com?plugins=typography"></script><script>
+    tailwind.config = {
+      theme: {
+        extend :{
+          fontFamily: {
+            ocra : ['OCRA' , 'monospace'] ,
+          }
+        }
+      }
+    }
+  </script>
+  <style>@font-face {
+    font-family: 'OCR-A';
+    src: url('./fonts/OCRAStd.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  </style>
   <title>La Chignol Blog|{{.Title}}  </title>
 </head>
-<body>
-  <nav class="flex items-center justify-between bg-gray-800 p-6 mb-4">
-    <div class="flex items-center flex-shrink-0 text-white mr-6">
-      <a href="/" class="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded">
-          <span class="font-semibold text-xl tracking-tight">La Chignol Blog</span>
-      </a>
-    </div>
-    <div class="block">
-      <ul class="flex space-x-4">
-        <li><a href="/" class="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded">Home</a></li>
-        <li><a href="#" class="text-gray-300 hover:bg-gray-700 px-3 py-2 rounded">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
-  <div class="container mx-auto">
-    <h1 class="text-4xl font-bold text-center">{{.Title}}</h1>
+<body class="flex-col min-h-screen">
+  <header class="flex flex-col items-center justify-between max-w-full md:max-w-6xl px-2 md:px-6 py-12 mx-auto md:flex-row">
+    <a href="/" class="text-indigo-900 z-10 active">
+        <img src="https://www.svgrepo.com/show/489282/brand.svg" class="w-24 py-8 md:py-0 g-image">
+    </a>
+    <nav class="z-10">
+        <ul class="flex flex-row items-center px-6 py-4 text-indigo-100 bg-indigo-900 rounded-lg">
+            <li class="pr-8">
+                <a class="font-ocra" href="/">HOME</a>
+            </li>
+            <li class="pr-8">
+              <a class="font-ocra" href="https://github.com/Lachignol" target="_blank">GitHub</a>
+          </li>
+            <li class="pr-8">
+                <a class="font-ocra" href="https://www.linkedin.com/in/alexandre-scordilis" target="_blank">LinkedIn</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+  <div class="flex flex-col min-h-screen">
+<main class="flex-grow">
+<!-- Blog post with featured image -->
+<div class="font-ocra max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="max-w-3xl mx-auto">
+      <!-- Blog post header -->
+      <div class="py-8">
+          <h1 class="text-3xl font-bold mb-2">{{.Title}}</h1>
+      </div>
+      <!-- Blog post content -->
+      <div class="prose prose-sm sm:prose lg:prose-lg xl:prose-xl mx-auto">
+          {{.Content}}
+      </div>
+  </div>
+</div>
+  <!-- <div class="container mx-auto">
     {{with .Author}}
     <div class="text-center mt-4">
-      <p class="text-gray-500">Author: <a href="mailto:{{.Email}}">{{.Name}}</a></p>
+      <small class="text-gray-500">Author: <a href="mailto:{{.Email}}">{{.Name}}</a></small>
     </div>
     {{end}}
-    <div class="prose max-w-full">
-      {{.Content}}
-    </div>
-  </div>
-  {{with .Footer}}
-  <div>
-<small>{{.Copyright}}</small>
-  </div>
-  {{end}}
+  </div> -->
+</main>
+  <footer class="mt-auto text-sm leading-6 px-3 py-6">
+    {{with .Footer}}
+    <div class="container mx-auto flex justify-between items-center">
+        <div class="mb-6 sm:mb-0">
+            <p>{{.Copyright}}.</p>
+        </div>
+        <div class="flex space-x-10 text-slate-400">
+            <a href="https://github.com/Lachignol"
+                class="hover:text-slate-500">
+                <span class="sr-only">GitHub</span><svg width="25" height="24" fill="currentColor">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M12.846 0c-6.63 0-12 5.506-12 12.303 0 5.445 3.435 10.043 8.205 11.674.6.107.825-.262.825-.585 0-.292-.015-1.261-.015-2.291-3.015.569-3.795-.754-4.035-1.446-.135-.354-.72-1.446-1.23-1.738-.42-.23-1.02-.8-.015-.815.945-.015 1.62.892 1.845 1.261 1.08 1.86 2.805 1.338 3.495 1.015.105-.8.42-1.338.765-1.645-2.67-.308-5.46-1.37-5.46-6.075 0-1.338.465-2.446 1.23-3.307-.12-.308-.54-1.569.12-3.26 0 0 1.005-.323 3.3 1.26.96-.276 1.98-.415 3-.415s2.04.139 3 .416c2.295-1.6 3.3-1.261 3.3-1.261.66 1.691.24 2.952.12 3.26.765.861 1.23 1.953 1.23 3.307 0 4.721-2.805 5.767-5.475 6.075.435.384.81 1.122.81 2.276 0 1.645-.015 2.968-.015 3.383 0 .323.225.707.825.585a12.047 12.047 0 0 0 5.919-4.489 12.537 12.537 0 0 0 2.256-7.184c0-6.798-5.37-12.304-12-12.304Z">
+                    </path>
+                </svg>
+            </a>
+        </div>
+      </div>
+    {{end}}
+</footer>
+</div>
 </body>
 </html>
