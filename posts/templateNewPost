@@ -36,7 +36,7 @@ Collez l'URL de l'image entre parenthèses ()
 Insérez dans votre document : Placez cette ligne là où vous souhaitez que l'image apparaisse dans votre document Markdown.
 En suivant ces étapes, vous pourrez facilement insérer des images hébergées sur GitHub dans vos documents Markdown.
 
-![txt_alternatif a modifier ici ](https://raw.githubusercontent.com/Lachignol/lachignol--blog/refs/heads/main/Photos/IMG_1134.jpeg)
+![txt_alternatif a modifier ici ](https://raw.githubusercontent.com/Lachignol/lachignol--blog/refs/heads/main/Photos/{nom-de-l'image-presente-dans-le-dossier})
 
 (pour mettre du code ecrire ceci et remplacer le language utilise ici go puis entre les deux balise mettre le contenu)
 ```go
