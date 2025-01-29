@@ -28,4 +28,4 @@ if (str == NULL)
 ```
 - Arriver à conceptualiser les listes chaînées.
 
-*fuck ft_split exercice qui a eu raison de moi à l’examen final de la piscine (score 68).
+*fuck ft_split exercice qui a eu raison de moi à l’examen final de la piscine (score 66).
