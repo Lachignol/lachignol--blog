@@ -10,7 +10,7 @@ Après une piscine éprouvante et un mois *splité entre attente et satisfaction
 On retrouve notre équipe de la piscine (un aux bouclettes stylisées par Schwarzkopf à son prime manque à l’appel, mais nous rejoindra l’année prochaine, c’est une certitude !).
 On est tout de suite plongés dans le bain avec la piscine reloaded.
 En gros, on a une semaine avant la deadline qui permet, comme son nom l’indique, de refaire certains des exercices de la piscine que l’on a déjà faits, ainsi que d’autres pour lesquels nous n’avons pas eu le temps. 
-Pour moi, ce fut l’occasion, par exemple, de faire connaissance avec les Makefiles, qui sont des scripts bash souvent utilisés pour compiler les différents projets en C.
+Pour moi, ce fut l’occasion, par exemple, de faire connaissance avec les Makefiles, qui sont des scripts bash souvent utilisés pour compiler les différents projets en C ou encore les fichiers.h qui permettent des imports ainsi que des macros.
 
 ### Libft
 Une fois cette semaine passée, voici le vrai premier projet du premier cercle !!! La libft. 
