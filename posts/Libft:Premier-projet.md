@@ -1,6 +1,8 @@
-+++ title = “Libft : Premier Projet à 42” description = “Création de notre bibliothèque personnelle en C” date = 2025-01-30
++++
+ title = “Libft : Premier Projet à 42” description = “Création de notre bibliothèque personnelle en C” date = 2025-01-30
 author name = “La Chignol” email = "pas d'email for you"
-footer copyright = “©Lachignol” +++
+footer copyright = “©Lachignol”
+ +++
 
 ## Libft
 
