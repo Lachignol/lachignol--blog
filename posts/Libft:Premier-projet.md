@@ -18,7 +18,7 @@ Ce pour quoi nous devons les coder nous-mêmes afin de pouvoir les utiliser plus
 Ce fut l’occasion dans les bonus de faire connaissance avec une structure de données bien connue : les fameuses listes chaînées.
 
 #### Tricky part
-- Toutes les conditions de contrôle à prévoir :
+- Toutes les conditions de contrôle à prévoir.
 Exemple basique :
 ```c
 if (str == NULL)
