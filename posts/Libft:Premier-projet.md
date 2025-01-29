@@ -20,8 +20,9 @@ Ce fut l’occasion dans les bonus de faire connaissance avec une structure de d
 #### Tricky part
 - Toutes les conditions de contrôle à prévoir :
 Exemple basique :
-
+```c
 if (str == NULL)
     return (NULL);
+```
 
 - Arriver à conceptualiser les listes chaînées.
