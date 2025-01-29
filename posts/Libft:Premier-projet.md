@@ -29,4 +29,4 @@ if (str == NULL)
 
 - Arriver à conceptualiser les listes chaînées.
 
-*FUCK ft_split exercice qui a eu raison de moi à l’examen final)
+* fuck ft_split exercice qui a eu raison de moi à l’examen final.
