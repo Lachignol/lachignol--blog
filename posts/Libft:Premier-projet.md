@@ -6,15 +6,17 @@ footer copyright = “©Lachignol” +++
 
 ### Premier projet
 
-Après une piscine éprouvante et un mois splitté (FUCK ft_split !! c’est l’exercice qui a eu raison de moi à l’examen final) entre attente et satisfaction après le résultat tant attendu.
+Après une piscine éprouvante et un mois *splitté entre attente et satisfaction après le résultat tant attendu.
+L’aventure commence, on retrouve notre équipe de la piscine (un au bouclette stylisé par schwarzkopf à son prime manque à l’appel mais nous rejoindra l’année prochaine, c’est une certitude!!) 
 
-L’aventure commence, on retrouve notre équipe de la piscine (un au bouclette stylisé par schwarzkopf à son prime manque à l’appel mais nous rejoindra l’année prochaine, c’est une certitude :)) 
-On est tout de suite plongé dans le bain avec la piscine reloaded pour laquelle on a une semaine avant la deadline qui permet comme son nom l'indique de refaire certains des exercices de la piscine que l’on a déjà fait,
-ainsi que ceux dont nous n’avons pas eu le temps de finir.
-
+On est tout de suite plongé dans le bain avec la piscine reloaded.
+En gros on a une semaine avant la deadline qui permet comme son nom l'indique de refaire certains des exercices de la piscine que l’on a déjà fait,
+ainsi que d'autres pour lesquels nous n’avons pas eu le temps.
 Pour moi, ce fut l’occasion par exemple de faire connaissance avec les Makefiles qui sont les scripts bash souvent utilisés pour compiler les différents projets C.
-Une fois cette semaine passée, voici le vrai premier projet du premier cercle !!! La libft en réalité n’est pas un projet classique car le but est de constituer notre librairie afin d’avoir une multitude de fonctions essentielles qui existent déjà dans les librairies standard en C mais auxquelles nous n’avons évidemment pas le droit (42 mentality !!).
-Ce pour quoi nous devons les coder nous-mêmes afin de pouvoir les utiliser plus tard, après le sentiment du devoir accompli après avoir réussi le ft_split et bien d’autres. 
+
+Une fois cette semaine passée, voici le vrai premier projet du premier cercle !!! 
+La libft en réalité c'est pas trop un projet classique car le but est de constituer notre librairie afin d’avoir une multitude de fonctions essentielles qui existent déjà dans les librairies standard en C mais auxquelles nous n’avons évidemment pas le droit (42 mentality !!).
+Ce pour quoi nous devons les coder nous-mêmes afin de pouvoir les utiliser plus tard,le sentiment du devoir accompli après avoir réussi le ft_split et bien d’autres;
 Ce fut l’occasion dans les bonus de faire connaissance avec une structure de données bien connue : les fameuses listes chaînées.
 
 #### Tricky part
@@ -26,3 +28,5 @@ if (str == NULL)
 ```
 
 - Arriver à conceptualiser les listes chaînées.
+
+*FUCK ft_split exercice qui a eu raison de moi à l’examen final)
