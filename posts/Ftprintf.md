@@ -44,7 +44,7 @@ printf("Voici l'adresse du pointeur : %p", pointeur);
  ´´´
 Dans ce cas, il faut afficher en hexadécimal l’adresse du pointeur.
 
-Tricky part:
+#### Tricky part
 
 La fonction `printf` doit retourner le nombre total de caractères affichés.
 	•	Répliquer les messages d’erreur spécifiques
