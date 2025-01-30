@@ -27,21 +27,21 @@ Cependant, pour afficher exactement ce que l’on veut, quand on le veut, nous d
 -Il faut analyser la chaîne de format pour déterminer l’opération à effectuer en fonction du type attendu, indiqué par la lettre après `%`.
 
 Exemple simple :
- ´´´c
+```c
 printf("Voici la string à afficher : %s", string);
- ´´´
+```
 Dans ce cas, nous devons boucler et afficher tous les caractères de la variable `string`.
 
 Autre exemple :
- ´´´c
+```c
 printf("Voici le nombre à afficher : %d", int);
- ´´´
+```
 Ici, nous devons convertir en caractères la valeur de l’entier `int`.
 
 Cas plus complexe :
- ´´´c
+```c
 printf("Voici l'adresse du pointeur : %p", pointeur);
- ´´´
+```
 Dans ce cas, il faut afficher en hexadécimal l’adresse du pointeur.
 
 #### Tricky part
