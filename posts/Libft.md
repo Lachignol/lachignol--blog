@@ -1,5 +1,5 @@
 +++
-title = "Libft : Premier Projet à 42"
+title = "Libft"
 description = "Création de notre bibliothèque personnelle en C"
 date = 2025-01-30
 
@@ -12,7 +12,7 @@ copyright = "©LaChignol"
 
 +++
 
-## Libft
+
 
 ### Piscine reloaded 
 
