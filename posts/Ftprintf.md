@@ -27,13 +27,13 @@ Cependant, pour afficher exactement ce que l’on veut, quand on le veut, nous d
 
 Exemple simple :
 ```c
-printf("Voici la string à afficher : %s", string);
+printf("Voici la string à afficher : %s",(char *) string);
 ```
 Dans ce cas, nous devons boucler et afficher tous les caractères de la variable `string`.
 
 Autre exemple :
 ```c
-printf("Voici le nombre à afficher : %d", int);
+printf("Voici le nombre à afficher : %d",(int) nbr);
 ```
 Ici, nous devons convertir en caractères la valeur de l’entier `int`.
 
@@ -46,8 +46,7 @@ Dans ce cas, il faut afficher en hexadécimal l’adresse du pointeur.
 #### Tricky part
 
 La fonction `printf` doit retourner le nombre total de caractères affichés.
-	•	Répliquer les messages d’erreur spécifiques
+-	Répliquer les messages d’erreur spécifiques
 Par exemple :
-	•	`(nil)` pour un pointeur nul.
-	•	`(null)` pour une chaîne nulle.
-	•	Gestion des pointeurs nuls
+-	`(nil)` pour un pointeur nul.
+- `(null)` pour une chaîne nulle.
