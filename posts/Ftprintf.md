@@ -12,15 +12,15 @@ copyright = "©LaChignol"
 
 +++
 
-### Enrichir la libft
+### Enrichir la libft.
 Une fois la libft terminée, ce n’est pas fini ! 
 Nous allons encore l’enrichir, mais cette fois avec une fonction particulière et bien connue de tous : le fameux printf. 
 Quelle motivation de pouvoir enfin éviter de coder manuellement toutes les fonctions de conversion comme `itoa`, `atoi`, `put_nbr`, ainsi que leurs versions dans d’autres bases :binaire, octal ou hexadécimal. 
 Cependant, pour afficher exactement ce que l’on veut, quand on le veut, nous devons implémenter ces conversions une dernière fois pour constituer ce fameux printf.
 
-### Premiers défis
+### Premiers défis.
 
-#### Découvrir `va_args` / `va_list`
+#### Découvrir `va_args` / `va_list`.
 - Ces outils permettent de gérer un nombre indéterminé d’arguments et de les parcourir un à un.
 #### Parser le premier argument
 - Il faut analyser la chaîne de format pour déterminer l’opération à effectuer en fonction du type attendu, indiqué par la lettre situé après le `%`.
