@@ -47,6 +47,6 @@ Dans ce cas, il faut afficher en hexadécimal l’adresse du pointeur.
 
 - La fonction `printf` doit retourner le nombre total de caractères affichés.
 - Répliquer les messages d’erreur spécifiques
-##### Par exemple :
+Par exemple :
 - `(nil)` pour un pointeur nul.
 - `(null)` pour une chaîne nulle.
