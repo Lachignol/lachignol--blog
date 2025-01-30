@@ -20,7 +20,7 @@ Voici la dernière fonction, plus complexe à créer, afin d’intégrer notre l
 
 Elle consiste à renvoyer une ligne (caractérisée par un `\n`) du contenu d’un fichier, une par une. Dit comme cela, cela paraît simple, mais la complexité réside dans le fait de pouvoir le faire avec une taille de buffer variable.
 
-#### Explication
+#### Explication.
 Il faut savoir que la fonction `read` place un curseur là où elle s’est arrêtée. 
 Par exemple :
 - Si nous appliquons la fonction `read` avec un buffer de taille 50 et que la première ligne de notre fichier fait seulement 25 caractères (en comptant le \n), nous renvoyons donc les 25 premiers caractères.
