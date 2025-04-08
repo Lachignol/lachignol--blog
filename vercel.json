@@ -1,5 +1,4 @@
 {
-  "framework": "Other",
   "functions": {
     "cmd/server/serveur.go": {
       "runtime": "go@latest"
