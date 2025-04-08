@@ -1,13 +1,7 @@
 {
   "functions": {
-    "cmd/server/serveur.go": {
+    "api/serveur.go": {
       "runtime": "go@1.22.3"
     }
-  },
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/cmd/server/serveur.go"
-    }
-  ]
+  }
 }
