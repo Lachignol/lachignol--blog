@@ -1,7 +1,7 @@
 {
   "functions": {
     "api/serveur.go": {
-      "runtime": "go@1.22.3"
+      "runtime": "go@1.20.0"
     }
   }
 }
