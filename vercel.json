@@ -1,7 +1,7 @@
 {
   "functions": {
     "cmd/server/serveur.go": {
-      "runtime": "go@1.20"
+      "runtime": "go@1.20.0"
     }
   },
   "routes": [
