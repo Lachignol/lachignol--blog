@@ -11,19 +11,6 @@ email = "Pas d'email for you "
 copyright = "©LaChignol"
 
 +++
-+++
-title = "Installation de mon premier serveur"
-description = "Tuto d'installation de mon serveur"
-date = 2025-04-19
-
-[author]
-name = "La Chignol"
-email = "Pas d'email for you "
-
-[footer]
-copyright = "©LaChignol"
-
-+++
 
 ### 🛒 1. Acheter un VPS
 
