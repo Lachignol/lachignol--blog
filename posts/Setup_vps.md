@@ -12,21 +12,21 @@ copyright = "©LaChignol"
 
 +++
 
-## 🛒 1. Acheter un VPS
+### 🛒 1. Acheter un VPS
 
-### Connexion en SSH
+#### Connexion en SSH
 
 ```sh
 ssh root@votre_ip
 ```
 
-### Mise à jour du serveur
+#### Mise à jour du serveur
 
 ```sh
 apt update && apt upgrade -y
 ```
 
-### Installation des paquets essentiels
+#### Installation des paquets essentiels
 
 ```sh
 apt install sudo ufw curl wget git jq openssl vim tmux fish -y
@@ -34,7 +34,7 @@ apt install sudo ufw curl wget git jq openssl vim tmux fish -y
 
 ---
 
-## 🌐 2. Acheter un nom de domaine
+### 🌐 2. Acheter un nom de domaine
 
 Dans la gestion DNS de votre nom de domaine, ajoutez **deux enregistrements A** :
 
@@ -54,9 +54,9 @@ Dans la gestion DNS de votre nom de domaine, ajoutez **deux enregistrements A** 
 
 ---
 
-## 👤 3. Création d'un utilisateur non-root
+### 👤 3. Création d'un utilisateur non-root
 
-### Création de l'utilisateur
+#### Création de l'utilisateur
 
 ```sh
 useradd -m -s /bin/fish votre_user
@@ -64,7 +64,7 @@ usermod -aG sudo votre_user
 passwd votre_user
 ```
 
-### Déconnexion de root
+#### Déconnexion de root
 
 ```sh
 exit
@@ -72,17 +72,17 @@ exit
 
 ---
 
-## 🔑 4. Configuration des clés SSH
+### 🔑 4. Configuration des clés SSH
 
-Sur **votre machine locale** (pas sur le vps):
+Sur **votre machine locale** (pas sur le vps) :
 
-### Génération de la clé
+#### Génération de la clé
 
 ```sh
 ssh-keygen -t ed25519 -C "votre_email@domaine.com"
 ```
 
-### Copie de la clé publique sur le serveur
+#### Copie de la clé publique sur le serveur
 
 ```sh
 ssh-copy-id -i ~/.ssh/id_ed25519.pub votre_user@votre_ip
@@ -90,7 +90,7 @@ ssh-copy-id -i ~/.ssh/id_ed25519.pub votre_user@votre_ip
 
 ---
 
-### Configuration sécurisée de SSH (sur le serveur)
+#### Configuration sécurisée de SSH (sur le serveur)
 
 ```sh
 sudo vim /etc/ssh/sshd_config
@@ -109,7 +109,10 @@ Redémarrez SSH :
 ```sh
 sudo systemctl restart sshd
 ```
-### ✅ Activer UFW au démarrage automatiquement
+
+---
+
+#### ✅ Activer UFW au démarrage automatiquement
 
 UFW est normalement activé de manière persistante, **mais pour s'assurer qu'il démarre bien au boot**, on peut forcer l’activation via systemctl :
 
@@ -121,20 +124,20 @@ sudo systemctl enable ufw
 
 ---
 
-## 🔒 5. Configuration du pare-feu (UFW)
+### 🔒 5. Configuration du pare-feu (UFW)
 
-### Ouverture des ports nécessaires
+#### Ouverture des ports nécessaires
 
 ```sh
-sudo ufw allow 22
-sudo ufw allow 80
-sudo ufw allow 443
-sudo ufw allow 8000
-sudo ufw allow 6001
-sudo ufw allow 53
+sudo ufw allow 22    # SSH
+sudo ufw allow 80    # HTTP
+sudo ufw allow 443   # HTTPS (SSL)
+sudo ufw allow 8000  # Interface Coolify
+sudo ufw allow 6001  # Websockets / Laravel Echo / autres services
+sudo ufw allow 53    # DNS (utile pour certains conteneurs)
 ```
 
-### Activation de UFW
+#### Activation de UFW
 
 ```sh
 sudo ufw enable
@@ -142,7 +145,7 @@ sudo ufw enable
 
 ---
 
-## ⚙️ 6. Installation de Coolify
+### ⚙️ 6. Installation de Coolify
 
 1. Accédez à Coolify :  
    http://votre_ip:8000
@@ -156,9 +159,9 @@ sudo ufw enable
 
 ---
 
-## 🧩 7. Paramétrage dans Coolify
+### 🧩 7. Paramétrage dans Coolify
 
-### 🔧 Paramètres de l'instance
+#### 🔧 Paramètres de l'instance
 
 - Allez dans **Settings**  
 - Renseignez :
@@ -167,7 +170,7 @@ sudo ufw enable
 
 ---
 
-### 🔁 Redémarrage du proxy
+#### 🔁 Redémarrage du proxy
 
 - Allez dans l’onglet **Servers**
 - Redémarrez le proxy
@@ -175,7 +178,7 @@ sudo ufw enable
 
 ---
 
-### 🧪 Création d’un projet
+#### 🧪 Création d’un projet
 
 1. Créez un projet
 2. Cliquez sur **New GitHub App**
@@ -184,17 +187,17 @@ sudo ufw enable
 
 ---
 
-## 🧱 8. Sécuriser l’accès à Coolify via le domaine (et pas via l'IP)
+### 🧱 8. Sécuriser l’accès à Coolify via le domaine (et pas via l'IP)
 
-### Problème : UFW ne s’applique pas aux conteneurs Docker par défaut
+#### Problème : UFW ne s’applique pas aux conteneurs Docker par défaut
 
 👉 Solution : utiliser **ufw-docker**
 
 ---
 
-## 🧰 9. Installation de `ufw-docker`
+### 🧰 9. Installation de `ufw-docker`
 
-### Étapes :
+#### Étapes :
 
 1. **Téléchargez le script** `ufw-docker`
 2. **Rendez-le exécutable** :
@@ -225,7 +228,7 @@ sudo ufw reload
 
 ---
 
-## 🧠 10. Automatiser au reboot (via cron)
+### 🧠 10. Automatiser au reboot (via cron)
 
 **UFW-Docker** doit être relancé à chaque redémarrage du serveur.
 
@@ -233,75 +236,5 @@ Ajoutez cette tâche cron pour l’utilisateur root :
 
 ```sh
 sudo crontab -e
-```
-
-Ajoutez les lignes suivantes :
-
-```sh
-@reboot sleep 12 && /usr/local/bin/ufw-docker install
-@reboot sleep 15 && /usr/local/bin/ufw-docker allow coolify-proxy
-```
-
-> 🔍 Tu peux aussi envisager un service systemd pour plus de robustesse (je verrais plus tard).
-
----
-
-## 🛡️ Bonus : Installer et configurer Fail2Ban (fortement recommandé)
-
-Fail2Ban permet de protéger ton serveur contre les tentatives de connexion SSH bruteforce (et d'autres attaques). Il bannit automatiquement les IP suspectes.
-
-### 🔧 Installation
-
-```sh
-sudo apt install fail2ban -y
-```
-
-### ⚙️ Configuration de base
-
-Crée un fichier de configuration personnalisé (pour ne pas écraser les réglages par défaut lors des mises à jour) :
-
-```sh
-sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
-```
-
-Édite le fichier :
-
-```sh
-sudo vim /etc/fail2ban/jail.local
-```
-
-Vérifie ou modifie les paramètres dans la section `[sshd]` :
-
-```ini
-[sshd]
-enabled = true
-port    = ssh
-logpath = %(sshd_log)s
-maxretry = 5
-bantime = 3600
-```
-
-> `bantime` = durée du bannissement (en secondes)  
-> `maxretry` = nombre de tentatives autorisées avant bannissement
-
-### ✅ Redémarrer Fail2Ban
-
-```sh
-sudo systemctl restart fail2ban
-```
-
-### 📋 Vérifier que ça fonctionne
-
-Pour voir l’état de la jail SSH :
-
-```sh
-sudo fail2ban-client status sshd
-```
-
----
-
-> 🔐 Avec cette config, ton serveur sera déjà bien plus secure contre les attaques et grace a fail2ban j'ai vu que des gens essaye de ce connecter a ce serveur pas tres interessant ....)
-```sh
-sudo laissez mon serveur tranquile !!
 ```
 
