@@ -12,10 +12,6 @@ copyright = "©LaChignol"
 
 +++
 
-#  Mon tuto pour paramétrer un VPS avec Coolify
-
----
-
 ## 🛒 1. Acheter un VPS
 
 ### Connexion en SSH
@@ -113,6 +109,15 @@ Redémarrez SSH :
 ```sh
 sudo systemctl restart sshd
 ```
+### ✅ Activer UFW au démarrage automatiquement
+
+UFW est normalement activé de manière persistante, **mais pour s'assurer qu'il démarre bien au boot**, on peut forcer l’activation via systemctl :
+
+```sh
+sudo systemctl enable ufw
+```
+
+> Cette commande s’assure que le pare-feu UFW est bien lancé à chaque redémarrage du serveur.
 
 ---
 
