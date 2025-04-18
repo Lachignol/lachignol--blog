@@ -301,5 +301,7 @@ sudo fail2ban-client status sshd
 ---
 
 > 🔐 Avec cette config, ton serveur sera déjà bien plus secure contre les attaques et grace a fail2ban j'ai vu que des gens essaye de ce connecter a ce serveur pas tres interessant ....)
+```sh
+sudo laissez mon serveur tranquile !!
 ```
 
