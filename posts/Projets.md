@@ -12,8 +12,6 @@ copyright = "©LaChignol"
 
 +++
 
-
-
 ### Piscine reloaded.
 
 Après une piscine éprouvante et un mois *splité entre attente et satisfaction après le résultat tant attendu, l’aventure commence. 
