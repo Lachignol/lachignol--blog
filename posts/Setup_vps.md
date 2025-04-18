@@ -11,6 +11,19 @@ email = "Pas d'email for you "
 copyright = "©LaChignol"
 
 +++
++++
+title = "Installation de mon premier serveur"
+description = "Tuto d'installation de mon serveur"
+date = 2025-04-19
+
+[author]
+name = "La Chignol"
+email = "Pas d'email for you "
+
+[footer]
+copyright = "©LaChignol"
+
++++
 
 ### 🛒 1. Acheter un VPS
 
@@ -74,7 +87,7 @@ exit
 
 ### 🔑 4. Configuration des clés SSH
 
-Sur **votre machine locale** (pas sur le vps) :
+Sur **votre machine locale** (pas sur le vps):
 
 #### Génération de la clé
 
@@ -109,9 +122,6 @@ Redémarrez SSH :
 ```sh
 sudo systemctl restart sshd
 ```
-
----
-
 #### ✅ Activer UFW au démarrage automatiquement
 
 UFW est normalement activé de manière persistante, **mais pour s'assurer qu'il démarre bien au boot**, on peut forcer l’activation via systemctl :
@@ -129,12 +139,12 @@ sudo systemctl enable ufw
 #### Ouverture des ports nécessaires
 
 ```sh
-sudo ufw allow 22    # SSH
-sudo ufw allow 80    # HTTP
-sudo ufw allow 443   # HTTPS (SSL)
-sudo ufw allow 8000  # Interface Coolify
-sudo ufw allow 6001  # Websockets / Laravel Echo / autres services
-sudo ufw allow 53    # DNS (utile pour certains conteneurs)
+sudo ufw allow 22
+sudo ufw allow 80
+sudo ufw allow 443
+sudo ufw allow 8000
+sudo ufw allow 6001
+sudo ufw allow 53
 ```
 
 #### Activation de UFW
@@ -148,14 +158,14 @@ sudo ufw enable
 ### ⚙️ 6. Installation de Coolify
 
 1. Accédez à Coolify :  
-   http://votre_ip:8000
+http://votre_ip:8000
 
 2. Créez votre compte administrateur.
 
 3. Configurez :
-   - Le **nom de domaine personnalisé**
-   - Le **SSL (Let's Encrypt)**
-   - Les **sauvegardes**
+- Le **nom de domaine personnalisé**
+- Le **SSL (Let's Encrypt)**
+- Les **sauvegardes**
 
 ---
 
@@ -165,8 +175,8 @@ sudo ufw enable
 
 - Allez dans **Settings**  
 - Renseignez :
-  - **Instance domain** : `https://le-nom-que-tu-veu-pour-page-login.mondomaine.com`
-  - **Instance name** : `Coolify`
+- **Instance domain** : `https://le-nom-que-tu-veu-pour-page-login.mondomaine.com`
+- **Instance name** : `Coolify`
 
 ---
 
@@ -236,5 +246,75 @@ Ajoutez cette tâche cron pour l’utilisateur root :
 
 ```sh
 sudo crontab -e
+```
+
+Ajoutez les lignes suivantes :
+
+```sh
+@reboot sleep 12 && /usr/local/bin/ufw-docker install
+@reboot sleep 15 && /usr/local/bin/ufw-docker allow coolify-proxy
+```
+
+> 🔍 Tu peux aussi envisager un service systemd pour plus de robustesse (je verrais plus tard).
+
+---
+
+### 🛡️ Bonus : Installer et configurer Fail2Ban (fortement recommandé)
+
+Fail2Ban permet de protéger ton serveur contre les tentatives de connexion SSH bruteforce (et d'autres attaques). Il bannit automatiquement les IP suspectes.
+
+#### 🔧 Installation
+
+```sh
+sudo apt install fail2ban -y
+```
+
+#### ⚙️ Configuration de base
+
+Crée un fichier de configuration personnalisé (pour ne pas écraser les réglages par défaut lors des mises à jour) :
+
+```sh
+sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+```
+
+Édite le fichier :
+
+```sh
+sudo vim /etc/fail2ban/jail.local
+```
+
+Vérifie ou modifie les paramètres dans la section `[sshd]` :
+
+```ini
+[sshd]
+enabled = true
+port    = ssh
+logpath = %(sshd_log)s
+maxretry = 5
+bantime = 3600
+```
+
+> `bantime` = durée du bannissement (en secondes)  
+> `maxretry` = nombre de tentatives autorisées avant bannissement
+
+#### ✅ Redémarrer Fail2Ban
+
+```sh
+sudo systemctl restart fail2ban
+```
+
+#### 📋 Vérifier que ça fonctionne
+
+Pour voir l’état de la jail SSH :
+
+```sh
+sudo fail2ban-client status sshd
+```
+
+---
+
+> 🔐 Avec cette config, ton serveur sera déjà bien plus secure contre les attaques et grace a fail2ban j'ai vu que des gens essaye de ce connecter a ce serveur pas tres interessant ....)
+```sh
+sudo laissez mon serveur tranquile !!
 ```
 
