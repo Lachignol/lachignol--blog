@@ -1,5 +1,5 @@
 +++
-title = "Mon Setup Neovim à 42"
+title = "42-Mon Setup Neovim"
 description = "Tuto d'installation pour un setup rapide et minimum a l'ecole 42"
 date = 2025-04-02
 
