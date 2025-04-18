@@ -12,161 +12,289 @@ copyright = "©LaChignol"
 
 +++
 
+#  Mon tuto pour paramétrer un VPS avec Coolify
 
-#### Je ne vais pas raconter ma vie, j’ai juste créé ce blog en Golang afin de pouvoir écrire des articles (c’est un grand mot 🤦) depuis mon téléphone au format Markdown.
+---
 
-### grand titre (après celui de l’article en metada
+## 🛒 1. Acheter un VPS
 
-Connectez-vous en SSH :
+### Connexion en SSH
 
 ```sh
 ssh root@votre_ip
-
 ```
 
-Mettre à jour son serveur
+### Mise à jour du serveur
 
 ```sh
-
 apt update && apt upgrade -y
-
 ```
 
-Installation des paquets essentiels :
+### Installation des paquets essentiels
 
 ```sh
 apt install sudo ufw curl wget git jq openssl vim tmux fish -y
 ```
-### Acheter nom de domaine
 
-puis aller dans la partie souvent dns:
+---
 
-Fait deux enregistrement
-Le premier :
-Type A
-Nom: @
-Contenu : ip du serveur
-Le deuxième:
-Type A
-Nom:*(asterisque)
-Contenu:ip du serveur 
+## 🌐 2. Acheter un nom de domaine
 
-@ : correspond au domaine racine (ex: votredomaine.com)
-• * : correspond à tous les sous-domaines non spécifiquement définis (ex: test.votredomaine.com)
+Dans la gestion DNS de votre nom de domaine, ajoutez **deux enregistrements A** :
 
+1.  
+**Type :** A  
+**Nom :** `@`  
+**Contenu :** IP de votre serveur
 
-### Création d'un utilisateur non-root
-#### Création de l'utilisateur
+2.  
+**Type :** A  
+**Nom :** `*` (astérisque)  
+**Contenu :** IP de votre serveur
+
+**Explication :**
+- `@` correspond au domaine racine (ex : votredomaine.com)
+- `*` correspond à tous les sous-domaines non définis (ex : test.votredomaine.com)
+
+---
+
+## 👤 3. Création d'un utilisateur non-root
+
+### Création de l'utilisateur
+
+```sh
 useradd -m -s /bin/fish votre_user
 usermod -aG sudo votre_user
 passwd votre_user
+```
 
-#### Déconnexion
+### Déconnexion de root
+
+```sh
 exit
+```
 
+---
 
-Configuration des clés SSH
-Sur votre machine locale :
-#### Génération de la clé
+## 🔑 4. Configuration des clés SSH
+
+Sur **votre machine locale** (pas sur le vps):
+
+### Génération de la clé
+
+```sh
 ssh-keygen -t ed25519 -C "votre_email@domaine.com"
+```
 
-#### Copie de la clé publique vers le serveur
+### Copie de la clé publique sur le serveur
+
+```sh
 ssh-copy-id -i ~/.ssh/id_ed25519.pub votre_user@votre_ip
+```
 
+---
 
-Configuration SSH sécurisée
-Sur le serveur :
+### Configuration sécurisée de SSH (sur le serveur)
+
+```sh
 sudo vim /etc/ssh/sshd_config
+```
 
-Modifiez/ajoutez les lignes suivantes :
+Modifiez / ajoutez les lignes suivantes :
+
+```text
 PubkeyAuthentication yes
 PasswordAuthentication no
 PermitRootLogin yes
-Redémarrez le service SSH :
-sudo systemctl restart sshd
-Configuration du pare-feu
+```
 
-#### Activation des ports essentiels
+Redémarrez SSH :
+
+```sh
+sudo systemctl restart sshd
+```
+
+---
+
+## 🔒 5. Configuration du pare-feu (UFW)
+
+### Ouverture des ports nécessaires
+
+```sh
 sudo ufw allow 22
 sudo ufw allow 80
 sudo ufw allow 443
 sudo ufw allow 8000
 sudo ufw allow 6001
 sudo ufw allow 53
+```
 
+### Activation de UFW
 
-#### Activation du pare-feu
+```sh
 sudo ufw enable
+```
 
-### Installer coolify
+---
 
-#### Configuration initiale
-1. Accédez à votre instance Coolify via : http://votre_ip:8000
-• Créez votre compte administrateur
-• Configurez les paramètres suivants :
-- Nom de domaine personnalisé
-- Activation SSL avec Let's Encrypt
-- Configuration des sauvegardes
+## ⚙️ 6. Installation de Coolify
 
-2. Allez dans settings
+1. Accédez à Coolify :  
+   http://votre_ip:8000
 
-Dans le champ instance domaine:
-Mettre votre nom de domaine:
-ex: https://nom-que -tu-veu-pour-acceder-page-login-collify-de-ton-serveur.tonnomdedomaine.nimp
+2. Créez votre compte administrateur.
 
-Dans instance name :
-Collify
+3. Configurez :
+   - Le **nom de domaine personnalisé**
+   - Le **SSL (Let's Encrypt)**
+   - Les **sauvegardes**
 
+---
 
-3. Allez dans serveur 
-restart le proxy:
-Dans wildcarddomaine tu peu aussi rentrer ton nom de domaine ( du coup il créera automatiquement les truc qui veu genre préboot etc sur un sous domaine de ton domaine
+## 🧩 7. Paramétrage dans Coolify
 
-Et crée un projet et mettre ajouter GitHub
-Dans New GitHub app
-Dans name mettre par exemple GitHub-Lachignol-coolify et ensuite cela va ouvrir GitHub tu met aussi le nom que tu veu et tu te laisse porter loool
+### 🔧 Paramètres de l'instance
 
-Dernière étape car ufw est pas appliquer au conteneur docker :
+- Allez dans **Settings**  
+- Renseignez :
+  - **Instance domain** : `https://le-nom-que-tu-veu-pour-page-login.mondomaine.com`
+  - **Instance name** : `Coolify`
 
-Car c’est plus secure de bloquer l’adresse :
+---
 
-http://votre_ip:8000
+### 🔁 Redémarrage du proxy
 
-Et que soit seulement accessible la page avec certificat ssl sur ton domaine qu’à tu à renseigner dans la partie :
+- Allez dans l’onglet **Servers**
+- Redémarrez le proxy
+- Dans **Wildcard domain**, ajoutez votre domaine (il générera automatiquement les sous-domaines nécessaires)
 
-Allez dans settings
-Et dans instance domaine :
-mettre votre nom de domaine ex(https://nom-que -tu-veu-pour-acceder-page-login-collify-de-ton-serveur.tonnomdedomaine.nimp
+---
 
-Il faut installer
+### 🧪 Création d’un projet
 
-#### Ufw-docker
+1. Créez un projet
+2. Cliquez sur **New GitHub App**
+3. Nommez-le (ex : `GitHub-Ton-Nom-User-coolify`)
+4. Laissez-vous guider par GitHub pour terminer la configuration
 
-##### Étapes d’installation:
-1. Téléchargez le script ufw-docker :
+---
 
-2. Rendez le script exécutable :
+## 🧱 8. Sécuriser l’accès à Coolify via le domaine (et pas via l'IP)
 
-sudo chmod +x chemin du script
+### Problème : UFW ne s’applique pas aux conteneurs Docker par défaut
 
-Installez les règles nécessaires dans UFW (déjà fait avant ):
+👉 Solution : utiliser **ufw-docker**
 
+---
 
+## 🧰 9. Installation de `ufw-docker`
+
+### Étapes :
+
+1. **Téléchargez le script** `ufw-docker`
+2. **Rendez-le exécutable** :
+
+```sh
+sudo chmod +x chemin/vers/ufw-docker
+```
+
+3. **Installez les règles** :
+
+```sh
 sudo ufw-docker install
+```
 
-Cette commande sauvegarde `/etc/ufw/after.rules` et ajoute les règles nécessaires pour que UFW et Docker fonctionnent ensemble correctement
+> Cette commande adapte `/etc/ufw/after.rules` pour Docker
 
+4. **Autorisez le conteneur `coolify-proxy`** :
 
-Pour autoriser un port d’un conteneur :
-( ici nom du conteneur collify-proxi:
-`ufw-docker allow <nom_du_conteneur> <port>`
+```sh
+ufw-docker allow coolify-proxy
+```
 
-Pensez à bien relancer UFW (`sudo ufw reload`) après modification des règles si nécessaire.
+5. **Rechargez UFW si besoin** :
 
-Solution temporaire
-Cron tab root qui a chaque reboot fait un ufw-docker install et ufw-docker allow conteneur
+```sh
+sudo ufw reload
+```
 
-( ce renseigner sur systèmed)
+---
 
-J’ai aussi installer fail2ban ( recommander )
+## 🧠 10. Automatiser au reboot (via cron)
+
+**UFW-Docker** doit être relancé à chaque redémarrage du serveur.
+
+Ajoutez cette tâche cron pour l’utilisateur root :
+
+```sh
+sudo crontab -e
+```
+
+Ajoutez les lignes suivantes :
+
+```sh
+@reboot sleep 12 && /usr/local/bin/ufw-docker install
+@reboot sleep 15 && /usr/local/bin/ufw-docker allow coolify-proxy
+```
+
+> 🔍 Tu peux aussi envisager un service systemd pour plus de robustesse (je verrais plus tard).
+
+---
+
+## 🛡️ Bonus : Installer et configurer Fail2Ban (fortement recommandé)
+
+Fail2Ban permet de protéger ton serveur contre les tentatives de connexion SSH bruteforce (et d'autres attaques). Il bannit automatiquement les IP suspectes.
+
+### 🔧 Installation
+
+```sh
+sudo apt install fail2ban -y
+```
+
+### ⚙️ Configuration de base
+
+Crée un fichier de configuration personnalisé (pour ne pas écraser les réglages par défaut lors des mises à jour) :
+
+```sh
+sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+```
+
+Édite le fichier :
+
+```sh
+sudo vim /etc/fail2ban/jail.local
+```
+
+Vérifie ou modifie les paramètres dans la section `[sshd]` :
+
+```ini
+[sshd]
+enabled = true
+port    = ssh
+logpath = %(sshd_log)s
+maxretry = 5
+bantime = 3600
+```
+
+> `bantime` = durée du bannissement (en secondes)  
+> `maxretry` = nombre de tentatives autorisées avant bannissement
+
+### ✅ Redémarrer Fail2Ban
+
+```sh
+sudo systemctl restart fail2ban
+```
+
+### 📋 Vérifier que ça fonctionne
+
+Pour voir l’état de la jail SSH :
+
+```sh
+sudo fail2ban-client status sshd
+```
+
+---
+
+> 🔐 Avec cette config, ton serveur sera déjà bien plus secure contre les attaques et grace a fail2ban j'ai vu que des gens essaye de ce connecter a ce serveur pas tres interessant ....)
+```
 
