@@ -103,7 +103,15 @@ PubkeyAuthentication yes
 PasswordAuthentication no
 PermitRootLogin yes
 ```
-Vous pouvez modifier le port par défaut de SSH (22) et en choisir un autre (recommandé).
+Vous pouvez modifier le port par défaut de SSH (22) et en choisir un autre (recommandé):
+Rechercher la ligne suivante :
+```sh
+#Port 22
+```
+Et la modifier (ou la décommenter) pour indiquer le nouveau port, par exemple :
+```sh`
+Port 2222
+```
 PS : Si vous faites cela, pensez à utiliser le port que vous avez choisi à la place de 22 dans la partie configuration du pare-feu.
 
 Redémarrez SSH :
