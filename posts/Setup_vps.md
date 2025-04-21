@@ -109,13 +109,12 @@ Rechercher la ligne suivante :
 #Port 22
 ```
 Et la modifier (ou la décommenter) pour indiquer le nouveau port, par exemple :
-```sh`
+```sh
 Port 2222
 ```
 PS : Si vous faites cela, pensez à utiliser le port que vous avez choisi à la place de 22 dans la partie configuration du pare-feu.
 
 Redémarrez SSH :
-
 ```sh
 sudo systemctl restart sshd
 ```
@@ -192,9 +191,13 @@ http://votre_ip:8000
 ### 🧱 8. Sécuriser l’accès à Coolify via le domaine (et pas via l'IP)
 
 Afin d'eviter que l'on puisse acceder comme auparavant a:
+``` text
 http://votre_ip:8000
+```
 Mais seulement a:
+``` text
 https://votre-instance-domaine.votre-nom-de-domaine
+```
 
 #### Problème : UFW ne s’applique pas aux conteneurs Docker par défaut
 
