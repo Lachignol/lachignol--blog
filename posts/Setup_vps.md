@@ -114,7 +114,7 @@ Port 2222
 ```
 PS : Si vous faites cela, pensez à utiliser le port que vous avez choisi à la place de 22 dans la partie configuration du pare-feu.
 
-⚠️⚠️⚠️ Verifiez bien que la connexion ssh avec le nouveau port fonctionne bien avant de fermer votre connection deja ouverte afin de ne pas vous retrouver bloquer dehor.
+⚠️⚠️⚠️ Vérifiez bien que la connexion SSH avec le nouveau port fonctionne correctement avant de fermer votre session déjà ouverte, afin de ne pas vous retrouver bloqué dehors.
 
 Redémarrez SSH :
 ```sh
