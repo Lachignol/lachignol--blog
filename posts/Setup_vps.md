@@ -103,6 +103,8 @@ PubkeyAuthentication yes
 PasswordAuthentication no
 PermitRootLogin yes
 ```
+Vous pouvez modifier le port par défaut de SSH (22) et en choisir un autre (recommandé).
+PS : Si vous faites cela, pensez à utiliser le port que vous avez choisi à la place de 22 dans la partie configuration du pare-feu.
 
 Redémarrez SSH :
 
@@ -126,7 +128,7 @@ sudo systemctl enable ufw
 #### Ouverture des ports nécessaires
 
 ```sh
-sudo ufw allow 22
+sudo ufw allow 22 (Port choisi pour ssh)
 sudo ufw allow 80
 sudo ufw allow 443
 sudo ufw allow 8000
@@ -148,12 +150,6 @@ sudo ufw enable
 http://votre_ip:8000
 
 2. Créez votre compte administrateur.
-
-3. Configurez :
-- Le **nom de domaine personnalisé**
-- Le **SSL (Let's Encrypt)**
-- Les **sauvegardes**
-
 ---
 
 ### 🧩 7. Paramétrage dans Coolify
@@ -172,6 +168,7 @@ http://votre_ip:8000
 - Allez dans l’onglet **Servers**
 - Redémarrez le proxy
 - Dans **Wildcard domain**, ajoutez votre domaine (il générera automatiquement les sous-domaines nécessaires)
+- Si vous avez changer le port ssh changez le *port.
 
 ---
 
@@ -185,6 +182,11 @@ http://votre_ip:8000
 ---
 
 ### 🧱 8. Sécuriser l’accès à Coolify via le domaine (et pas via l'IP)
+
+Afin d'eviter que l'on puisse acceder comme auparavant a:
+http://votre_ip:8000
+Mais seulement a:
+https://votre-instance-domaine.votre-nom-de-domaine
 
 #### Problème : UFW ne s’applique pas aux conteneurs Docker par défaut
 
